@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "firebase": "firebase",
+    "deploy": "firebase deploy",
+    "deploy:hosting": "firebase deploy --only hosting"
+  },
+  "devDependencies": {
+    "firebase-tools": "^15.17.0"
+  }
+}

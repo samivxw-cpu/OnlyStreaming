@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - OnlyStreaming</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="admin">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo-text" href="app.html">
+        <span class="logo-mark">OS</span>
+        <span>OnlyStreaming</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="app.html">Catalogue</a>
+        <a href="favorites.html">Favoris</a>
+        <a class="active" href="admin.html">Admin</a>
+        <button type="button" data-logout>Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="toolbar">
+      <div>
+        <p class="eyebrow">Back office</p>
+        <h1>Administration</h1>
+      </div>
+    </section>
+
+    <section id="adminGate" class="empty-state">
+      <p class="eyebrow">Acces limite</p>
+      <h2>Ton compte doit etre ajoute dans la collection <code>admins</code>.</h2>
+      <p>Cree un document <code>admins/{uid}</code> dans Firestore pour debloquer cette page.</p>
+    </section>
+
+    <section id="adminPanel" class="admin-grid" hidden>
+      <div class="admin-panel">
+        <h2>Ajouter un film ou une serie</h2>
+        <form id="movieForm" class="form-grid">
+          <label class="field">
+            <span>Titre</span>
+            <input name="title" type="text" required>
+          </label>
+          <label class="field">
+            <span>Description</span>
+            <textarea name="description" required></textarea>
+          </label>
+          <label class="field">
+            <span>Image URL</span>
+            <input name="imageURL" type="url" required>
+          </label>
+          <label class="field">
+            <span>Video URL</span>
+            <input name="videoURL" type="url" required>
+          </label>
+          <label class="field">
+            <span>Categorie</span>
+            <select name="category" required>
+              <option value="film">Film</option>
+              <option value="serie">Serie</option>
+              <option value="documentaire">Documentaire</option>
+              <option value="animation">Animation</option>
+              <option value="action">Action</option>
+              <option value="drame">Drame</option>
+            </select>
+          </label>
+          <button class="btn btn-primary" type="submit">Sauvegarder</button>
+          <p id="adminStatus" class="status"></p>
+        </form>
+      </div>
+
+      <aside class="admin-panel">
+        <h2>Catalogue actuel</h2>
+        <ul id="adminMovieList" class="admin-list"></ul>
+      </aside>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

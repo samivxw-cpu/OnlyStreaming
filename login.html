@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion - OnlyStreaming</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+  <main class="auth-card">
+    <a class="logo-text" href="index.html">
+      <span class="logo-mark">OS</span>
+      <span>OnlyStreaming</span>
+    </a>
+    <h1>Connexion</h1>
+    <p>Reprends ta session et retrouve ton catalogue.</p>
+
+    <form id="loginForm" class="form-grid">
+      <label class="field">
+        <span>Email</span>
+        <input name="email" type="email" autocomplete="email" required>
+      </label>
+      <label class="field">
+        <span>Mot de passe</span>
+        <input name="password" type="password" autocomplete="current-password" required>
+      </label>
+      <button class="btn btn-primary" type="submit">Se connecter</button>
+      <p class="status" data-auth-status></p>
+    </form>
+
+    <p class="auth-switch">Pas encore inscrit ? <a href="register.html">Creer un compte</a></p>
+  </main>
+  <script type="module" src="auth.js"></script>
+</body>
+</html>

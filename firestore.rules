@@ -1,0 +1,70 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function hasMovieShape() {
+      return request.resource.data.keys().hasOnly([
+        "title",
+        "description",
+        "imageURL",
+        "videoURL",
+        "category",
+        "titleLower",
+        "views",
+        "createdBy",
+        "createdAt",
+        "updatedAt"
+      ])
+      && request.resource.data.title is string
+      && request.resource.data.description is string
+      && request.resource.data.imageURL is string
+      && request.resource.data.videoURL is string
+      && request.resource.data.category is string
+      && request.resource.data.titleLower is string
+      && request.resource.data.views is number;
+    }
+
+    function canIncrementViews() {
+      return signedIn()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          "views",
+          "updatedAt"
+        ])
+        && request.resource.data.views == resource.data.views + 1;
+    }
+
+    match /movies/{movieId} {
+      allow read: if signedIn();
+      allow create: if isAdmin() && hasMovieShape();
+      allow update: if (isAdmin() && hasMovieShape()) || canIncrementViews();
+      allow delete: if isAdmin();
+    }
+
+    match /users/{userId} {
+      allow read, create, update: if isOwner(userId);
+      allow delete: if false;
+
+      match /favorites/{movieId} {
+        allow read, create, update, delete: if isOwner(userId);
+      }
+    }
+
+    match /admins/{userId} {
+      allow read: if isOwner(userId);
+      allow write: if false;
+    }
+  }
+}

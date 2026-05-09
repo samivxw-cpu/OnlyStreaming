@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favoris - OnlyStreaming</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="favorites">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo-text" href="app.html">
+        <span class="logo-mark">OS</span>
+        <span>OnlyStreaming</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="app.html">Catalogue</a>
+        <a class="active" href="favorites.html">Favoris</a>
+        <button type="button" data-logout>Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="toolbar">
+      <div>
+        <p class="eyebrow">Watchlist</p>
+        <h1>Mes favoris</h1>
+      </div>
+      <a class="btn btn-secondary" href="app.html">Retour catalogue</a>
+    </section>
+    <p id="favoritesStatus" class="status"></p>
+    <section id="favoritesGrid" class="grid-page"></section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

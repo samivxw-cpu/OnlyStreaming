@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription - OnlyStreaming</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+  <main class="auth-card">
+    <a class="logo-text" href="index.html">
+      <span class="logo-mark">OS</span>
+      <span>OnlyStreaming</span>
+    </a>
+    <h1>Inscription</h1>
+    <p>Cree ton profil et commence a construire ta watchlist.</p>
+
+    <form id="registerForm" class="form-grid">
+      <label class="field">
+        <span>Nom du profil</span>
+        <input name="displayName" type="text" autocomplete="name" placeholder="Ex: Sami">
+      </label>
+      <label class="field">
+        <span>Email</span>
+        <input name="email" type="email" autocomplete="email" required>
+      </label>
+      <label class="field">
+        <span>Mot de passe</span>
+        <input name="password" type="password" autocomplete="new-password" minlength="6" required>
+      </label>
+      <button class="btn btn-primary" type="submit">Creer mon compte</button>
+      <p class="status" data-auth-status></p>
+    </form>
+
+    <p class="auth-switch">Deja un compte ? <a href="login.html">Connexion</a></p>
+  </main>
+  <script type="module" src="auth.js"></script>
+</body>
+</html>

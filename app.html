@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogue - OnlyStreaming</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="catalog">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo-text" href="app.html">
+        <span class="logo-mark">OS</span>
+        <span>OnlyStreaming</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a class="active" href="app.html">Catalogue</a>
+        <a href="favorites.html">Favoris</a>
+        <a data-admin-only hidden href="admin.html">Admin</a>
+        <button type="button" data-logout>Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section id="hero" class="hero"></section>
+
+    <section class="stats-grid" aria-label="Statistiques">
+      <div class="stat-card"><strong data-total-movies>0</strong><span>contenus</span></div>
+      <div class="stat-card"><strong data-total-favorites>0</strong><span>favoris</span></div>
+      <div class="stat-card"><strong data-total-categories>0</strong><span>categories</span></div>
+    </section>
+
+    <section class="toolbar">
+      <div>
+        <p class="eyebrow">Bienvenue <span data-user-name>Viewer</span></p>
+        <h2>Que veux-tu regarder ?</h2>
+      </div>
+      <input id="searchInput" class="search-input" type="search" placeholder="Rechercher un titre, une categorie...">
+    </section>
+
+    <p id="catalogStatus" class="status"></p>
+    <div id="movieSections"></div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
